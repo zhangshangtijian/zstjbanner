@@ -54,4 +54,16 @@ public class MainActivity extends AppCompatActivity {
         banner.stopAutoPlay();
     }
 
+    public void unselectR(View v) {
+        mIndicator.setUnselectedRadius(4);
+    }
+
+    public void selectR(View v) {
+        mIndicator.setSelectedRadius(8);
+    }
+
+    public void strokeWidth(View v) {
+        mIndicator.setUnselectedStrokeWidth(3);
+    }
+
 }

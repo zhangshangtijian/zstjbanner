@@ -15,16 +15,13 @@ public class ViewPagerIndicator extends View {
 
     private float cx;
     private float cy;
-    //    private float radius;
     private float selectedRadius;
     private float unselectedRadius;
     private Paint selectedPaint;
     private Paint unselectedPaint;
-    private Paint paint;
-    //	private Paint paint2;
-    private Paint paint3;
     private float INDEX;
     private int number = 0;
+    private float strokeWidth;
 
     public int getNumber() {
         return number;
@@ -46,41 +43,46 @@ public class ViewPagerIndicator extends View {
 
         float strokeWidth = array.getDimension(
                 R.styleable.orgIndicator_strokeWidth, 0);
-//        radius = array.getDimension(R.styleable.orgIndicator_radius, 8);
         selectedRadius = array.getDimension(
                 R.styleable.orgIndicator_selectedRadius, 16);
         unselectedRadius = array.getDimension(
                 R.styleable.orgIndicator_unselectedRadius, 12);
         array.recycle();
-
         selectedPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         selectedPaint.setColor(selectedColor);
         unselectedPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         unselectedPaint.setColor(unselectedColor);
         unselectedPaint.setStyle(Paint.Style.STROKE);
         unselectedPaint.setStrokeWidth(strokeWidth);
-//        paint3 = new Paint(Paint.ANTI_ALIAS_FLAG);
-//        paint3.setColor(selectedColor);
     }
 
     public ViewPagerIndicator(Context context) {
         super(context);
 //        int selectedColor = Color.WHITE;
-        int selectedColor = getContext().getResources().getColor(R.color.androidColorA);
+        int selectedColor = getContext().getResources().getColor(R.color.androidColorB);
         int unselectedColor = Color.WHITE;
-        float strokeWidth = ImageLoadUtils.dp2px(getContext(), (float) 1);
-//        radius = array.getDimension(R.styleable.orgIndicator_radius, 8);
+        strokeWidth = ImageLoadUtils.dp2px(getContext(), (float) 1);
         selectedRadius = ImageLoadUtils.dp2px(getContext(), 4);
         unselectedRadius = ImageLoadUtils.dp2px(getContext(), 3);
-
         selectedPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         selectedPaint.setColor(selectedColor);
         unselectedPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         unselectedPaint.setColor(unselectedColor);
         unselectedPaint.setStyle(Paint.Style.STROKE);
         unselectedPaint.setStrokeWidth(strokeWidth);
-//        paint3 = new Paint(Paint.ANTI_ALIAS_FLAG);
-//        paint3.setColor(selectedColor);
+    }
+
+    public void setSelectedRadius(float radius) {
+        selectedRadius = ImageLoadUtils.dp2px(getContext(), radius);
+    }
+
+    public void setUnselectedRadius(float radius) {
+        unselectedRadius = ImageLoadUtils.dp2px(getContext(), radius);
+    }
+
+    public void setUnselectedStrokeWidth(float radius) {
+        strokeWidth = ImageLoadUtils.dp2px(getContext(), radius);
+        unselectedPaint.setStrokeWidth(strokeWidth);
     }
 
     @Override
