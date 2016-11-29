@@ -6,9 +6,9 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.ihaozhuo.library.Constants;
+import com.facebook.imagepipeline.common.ResizeOptions;
+import com.ihaozhuo.library.commen.Constants;
 import com.ihaozhuo.library.R;
 
 import java.util.ArrayList;
@@ -21,11 +21,17 @@ public class FrescoPagerAdapter extends PagerAdapter {
     private List<Width16Heigth9DraweeView> mCacheViews = new ArrayList<>();
     private List<String> mImgRes;
     private Context mContext;
-    private View.OnClickListener mOnClickListener;
+    private onBannerItemClickListener mOnBannerItemClickListener;
+    private int width;
+    private int height;
+    private int loadingDrawable = -1;
 
-    public FrescoPagerAdapter(Context context) {
+
+    public FrescoPagerAdapter(Context context, int width, int height) {
+        this.width = width;
+        this.height = height;
         mImgRes = new ArrayList();
-        mImgRes.add("res:///" + R.drawable.banner);
+        mImgRes.add("res:///" + R.drawable.zbanner);
         mContext = context;
     }
 
@@ -35,8 +41,12 @@ public class FrescoPagerAdapter extends PagerAdapter {
         notifyDataSetChanged();
     }
 
-    public void setOnBannerClickListener(View.OnClickListener onClickListener) {
-        mOnClickListener = onClickListener;
+    public void setOnBannerItemClickListener(onBannerItemClickListener onClickListener) {
+        mOnBannerItemClickListener = onClickListener;
+    }
+
+    public void setLoadingDrawable(int drawable) {
+        loadingDrawable = drawable;
     }
 
     @Override
@@ -60,14 +70,17 @@ public class FrescoPagerAdapter extends PagerAdapter {
             iv.setLayoutParams(new ViewPager.LayoutParams());
             iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
-        ImageLoadUtils.getInstance().display(mImgRes.get(index), iv);
+        ResizeOptions resizeOptions = new ResizeOptions(width, height);
+        if (loadingDrawable != -1) {
+            ImageLoadUtils.getInstance().display(mImgRes.get(index), iv, loadingDrawable, resizeOptions);
+        } else {
+            ImageLoadUtils.getInstance().display(mImgRes.get(index), iv, R.drawable.zbanner, resizeOptions);
+        }
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mOnClickListener == null) {
-                    Toast.makeText(mContext, "click :" + (index + 1), Toast.LENGTH_SHORT).show();
-                } else {
-                    mOnClickListener.onClick(v);
+                if (mOnBannerItemClickListener != null) {
+                    mOnBannerItemClickListener.onItemClick(index);
                 }
             }
         });
@@ -80,4 +93,9 @@ public class FrescoPagerAdapter extends PagerAdapter {
         container.removeView((View) object);
         mCacheViews.add((Width16Heigth9DraweeView) object);
     }
+
+    public interface onBannerItemClickListener {
+        void onItemClick(int position);
+    }
+
 }

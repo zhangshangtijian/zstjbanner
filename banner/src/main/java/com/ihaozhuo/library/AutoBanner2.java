@@ -14,6 +14,9 @@ import android.widget.RelativeLayout;
 import android.widget.Scroller;
 import android.widget.Toast;
 
+import com.ihaozhuo.library.commen.CustomImagerView;
+import com.ihaozhuo.library.commen.ViewPagerIndicator;
+
 import java.lang.reflect.Field;
 import java.util.concurrent.TimeUnit;
 

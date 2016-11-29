@@ -1,4 +1,4 @@
-package com.ihaozhuo.library;
+package com.ihaozhuo.library.commen;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.ihaozhuo.library.FrescoUtils.ImageLoadUtils;
+import com.ihaozhuo.library.R;
 
 
 public class ViewPagerIndicator extends View {
@@ -59,7 +60,7 @@ public class ViewPagerIndicator extends View {
     public ViewPagerIndicator(Context context) {
         super(context);
 //        int selectedColor = Color.WHITE;
-        int selectedColor = getContext().getResources().getColor(R.color.androidColorB);
+        int selectedColor = getContext().getResources().getColor(R.color.theme_blue);
         int unselectedColor = Color.WHITE;
         strokeWidth = ImageLoadUtils.dp2px(getContext(), (float) 1);
         selectedRadius = ImageLoadUtils.dp2px(getContext(), 4);
@@ -83,6 +84,14 @@ public class ViewPagerIndicator extends View {
     public void setUnselectedStrokeWidth(float radius) {
         strokeWidth = ImageLoadUtils.dp2px(getContext(), radius);
         unselectedPaint.setStrokeWidth(strokeWidth);
+    }
+
+    public void setUnselectedColor(int color) {
+        unselectedPaint.setColor(getContext().getResources().getColor(color));
+    }
+
+    public void setSelectedColor(int color) {
+        selectedPaint.setColor(getContext().getResources().getColor(color));
     }
 
     @Override

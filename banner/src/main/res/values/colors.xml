@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <color name="theme_blue">#309BF2</color>
     <color name="androidColorA">#33B5E5</color>
     <color name="androidColorB">#AA66CC</color>
     <color name="androidColorC">#99CC00</color>

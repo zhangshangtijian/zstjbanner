@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.ihaozhuo.library.commen.Constants;
+import com.ihaozhuo.library.commen.CustomImagerView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +26,7 @@ public class MyPagerAdapter extends PagerAdapter {
 
     public MyPagerAdapter(Context context) {
         mImgRes = new ArrayList();
-        mImgRes.add(R.drawable.banner);
+        mImgRes.add(R.drawable.zbanner);
         mContext = context;
     }
 

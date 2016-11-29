@@ -4,7 +4,6 @@
     <declare-styleable name="orgIndicator">
         <attr name="selectedColor" format="color" />
         <attr name="unselectedColor" format="color" />
-        <attr name="radius" format="dimension" />
         <attr name="selectedRadius" format="dimension" />
         <attr name="unselectedRadius" format="dimension" />
         <attr name="strokeWidth" format="dimension" />

@@ -7,10 +7,14 @@ import android.view.Gravity;
 import android.view.WindowManager;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.Scroller;
 
+import com.ihaozhuo.library.commen.BannerPager;
 import com.ihaozhuo.library.FrescoUtils.FrescoPagerAdapter;
 import com.ihaozhuo.library.FrescoUtils.ImageLoadUtils;
+import com.ihaozhuo.library.commen.Constants;
+import com.ihaozhuo.library.commen.ViewPagerIndicator;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -34,8 +38,8 @@ import rx.schedulers.Schedulers;
  */
 public class AutoBanner extends FrameLayout {
     private int SpeedSCROLL = 800;// 滑动速度
-    private static final int MP = FrameLayout.LayoutParams.MATCH_PARENT;
-    private static final int WC = FrameLayout.LayoutParams.WRAP_CONTENT;
+    private static final int MP = RelativeLayout.LayoutParams.MATCH_PARENT;
+    private static final int WC = RelativeLayout.LayoutParams.WRAP_CONTENT;
     int width = 0;
     int height = 0;
 
@@ -43,7 +47,7 @@ public class AutoBanner extends FrameLayout {
     private int mPagerCount = 1;
     //自动播放时间
     private int mAutoPalyTime = 4000;
-    private ViewPager mViewPager;
+    private BannerPager mViewPager;
     private ViewPagerIndicator mIndicator;
     private FrescoPagerAdapter mPagerAdapter;
 
@@ -77,8 +81,17 @@ public class AutoBanner extends FrameLayout {
      *
      * @param clickListener
      */
-    public void setOnBannerClickListener(OnClickListener clickListener) {
-        mPagerAdapter.setOnBannerClickListener(clickListener);
+    public void setOnBannerItemClickListener(FrescoPagerAdapter.onBannerItemClickListener clickListener) {
+        mPagerAdapter.setOnBannerItemClickListener(clickListener);
+    }
+
+    /**
+     * 设置轮播图LoadingDrawable
+     *
+     * @param drawable
+     */
+    public void setLoadingDrawable(int drawable) {
+        mPagerAdapter.setLoadingDrawable(drawable);
     }
 
     /**
@@ -95,7 +108,9 @@ public class AutoBanner extends FrameLayout {
             mViewPager.setCurrentItem(mPagerCount * Constants.PAGERCOUNT / 2, false);
             startAutoPlay();
         }
-        mIndicator.setNumber(mPagerCount);
+        if (mIndicator != null) {
+            mIndicator.setNumber(mPagerCount);
+        }
     }
 
     /**
@@ -108,6 +123,7 @@ public class AutoBanner extends FrameLayout {
         lp.gravity = Gravity.BOTTOM;
         mIndicator.setLayoutParams(lp);
         addView(mIndicator);
+        mIndicator.setNumber(mPagerCount);
     }
 
     /**
@@ -122,6 +138,7 @@ public class AutoBanner extends FrameLayout {
         lp.gravity = Gravity.BOTTOM;
         mIndicator.setLayoutParams(lp);
         addView(mIndicator);
+        mIndicator.setNumber(mPagerCount);
     }
 
     /**
@@ -134,13 +151,14 @@ public class AutoBanner extends FrameLayout {
         mIndicator = indicator;
         mIndicator.setLayoutParams(params);
         addView(mIndicator);
+        mIndicator.setNumber(mPagerCount);
     }
 
 
     private void initView(Context context) {
-        mViewPager = new ViewPager(context);
-        addView(mViewPager, new FrameLayout.LayoutParams(MP, MP));
-        mPagerAdapter = new FrescoPagerAdapter(context);
+        mViewPager = new BannerPager(context);
+        addView(mViewPager);
+        mPagerAdapter = new FrescoPagerAdapter(context, width, height);
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

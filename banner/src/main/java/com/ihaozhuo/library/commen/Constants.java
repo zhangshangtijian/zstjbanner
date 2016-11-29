@@ -1,4 +1,4 @@
-package com.ihaozhuo.library;
+package com.ihaozhuo.library.commen;
 
 /**
  * Created by zhangzhongyao on 2016/11/24.

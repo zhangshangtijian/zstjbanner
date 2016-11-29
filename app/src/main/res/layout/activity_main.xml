@@ -1,73 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="haozhuo.ihaozhuo.autobanner.MainActivity">
+    android:layout_height="match_parent">
 
-    <!--<FrameLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content">-->
-
-    <com.ihaozhuo.library.AutoBanner
-        android:id="@+id/banner"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <!--<com.ihaozhuo.library.ViewPagerIndicator xmlns:indicator="http://schemas.android.com/apk/res-auto"-->
-    <!--android:id="@+id/indicator"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="24dp"-->
-    <!--android:layout_gravity="bottom"-->
-    <!--android:background="#66000000"-->
-    <!--indicator:selectedColor="@color/colorAccent"-->
-    <!--indicator:selectedRadius="4dp"-->
-    <!--indicator:strokeWidth="1.5dp"-->
-    <!--indicator:unselectedColor="@color/indicator_unselect"-->
-    <!--indicator:unselectedRadius="2dp" />-->
+        <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
 
-    <!--</FrameLayout>-->
+        <com.ihaozhuo.library.AutoBanner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
+        <!--<com.ihaozhuo.library.commen.ViewPagerIndicator xmlns:indicator="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/indicator"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="24dp"-->
+        <!--android:layout_gravity="bottom"-->
+        <!--android:background="#66000000"-->
+        <!--indicator:selectedColor="@color/colorAccent"-->
+        <!--indicator:selectedRadius="4dp"-->
+        <!--indicator:strokeWidth="1.5dp"-->
+        <!--indicator:unselectedColor="@color/indicator_unselect"-->
+        <!--indicator:unselectedRadius="2dp" />-->
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:onClick="start"
-        android:text="start"
-        android:textAllCaps="false" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:onClick="stop"
-        android:text="stop"
-        android:textAllCaps="false" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:onClick="selectR"
-        android:text="selectR"
-        android:textAllCaps="false" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:onClick="unselectR"
-        android:text="unselectR"
-        android:textAllCaps="false" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:onClick="strokeWidth"
-        android:text="strokeWidth"
-        android:textAllCaps="false" />
+        <!--</FrameLayout>-->
 
 
-</LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:onClick="start"
+            android:text="start"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:onClick="stop"
+            android:text="stop"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:onClick="selectR"
+            android:text="selectR"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:onClick="unselectR"
+            android:text="unselectR"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:onClick="strokeWidth"
+            android:text="strokeWidth"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:onClick="unselectColor"
+            android:text="unselectColor"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:onClick="selectColor"
+            android:text="selectColor"
+            android:textAllCaps="false" />
+
+
+    </LinearLayout>
+</ScrollView>

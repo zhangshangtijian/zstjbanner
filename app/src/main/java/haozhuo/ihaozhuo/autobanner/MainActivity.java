@@ -8,7 +8,7 @@ import android.view.View;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.ihaozhuo.library.AutoBanner;
 import com.ihaozhuo.library.FrescoUtils.ImageLoadUtils;
-import com.ihaozhuo.library.ViewPagerIndicator;
+import com.ihaozhuo.library.commen.ViewPagerIndicator;
 
 import java.util.ArrayList;
 
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         banner = (AutoBanner) findViewById(R.id.banner);
         initIndicator();
         banner.bindIndicator(mIndicator);
+        banner.setLoadingDrawable(R.drawable.loading);
 //        banner.addIndicator();
 //        banner.setOnBannerClickListener(new View.OnClickListener() {
 //            @Override
@@ -37,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         DATAS.add("res:///" + R.drawable.banner1);
         DATAS.add("res:///" + R.drawable.banner2);
         DATAS.add("res:///" + R.drawable.banner3);
-        DATAS.add("http://pic56.nipic.com/file/20141227/19674963_215052431000_2.jpg");
+        DATAS.add("http://tnfs.tngou.net/image/info/161128/2217d85bd71c9a4ea1224a998ed183e6.png");
+        DATAS.add("http://tnfs.tngou.net/image/info/161128/976734466fc4aaa26abead1b46899f45.jpg");
         banner.setImgRes(DATAS);
     }
 
@@ -64,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void strokeWidth(View v) {
         mIndicator.setUnselectedStrokeWidth(3);
+    }
+
+    public void selectColor(View v) {
+        mIndicator.setSelectedColor(R.color.androidColorD);
+    }
+
+    public void unselectColor(View v) {
+        mIndicator.setUnselectedColor(R.color.androidColorE);
     }
 
 }
